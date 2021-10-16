@@ -301,6 +301,7 @@ class MinioStorage(Storage):
     def url(
         self, name: str, *args, max_age: T.Optional[datetime.timedelta] = None
     ) -> str:
+        """
         if self.presign_urls:
             url = self._presigned_url(name, max_age=max_age)
         else:
@@ -326,7 +327,8 @@ class MinioStorage(Storage):
                     object_name=name,
                     # bucket_region=region,
                 )
-        return url
+        """
+        return "https://static.storekit.org/{}/{}".format(self.bucket_name, name)
 
     def accessed_time(self, name: str) -> datetime.datetime:
         """
